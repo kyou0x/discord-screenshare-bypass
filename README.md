@@ -59,6 +59,34 @@ After installation, simply open Discord normally. Screen sharing and all feature
 
 ---
 
+## Uninstall
+
+### Windows
+
+**Automated:**
+
+```powershell
+irm https://raw.githubusercontent.com/kyou0x/discord-screenshare-bypass/main/uninstall-windows.ps1 | iex
+```
+
+Or run locally: `.\uninstall-windows.ps1`
+
+**Manual:**
+- Settings → Network & Internet → Proxy → Disable proxy
+- Remove certificate: `Win+R` → `certmgr.msc` → Trusted Root → Delete proxy certificate
+
+### Linux
+
+**Automated:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/kyou0x/discord-screenshare-bypass/main/uninstall-linux.sh | sudo bash
+```
+
+Or run locally: `sudo ./uninstall-linux.sh`
+
+---
+
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
