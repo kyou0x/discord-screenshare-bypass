@@ -28,8 +28,9 @@ echo -e "${NC}"
 echo ""
 
 if [ "$EUID" -ne 0 ]; then
-    echo -e "${RED}ERROR: Run as root: sudo bash $0${NC}"
-    exit 1
+    echo -e "${YELLOW}Requesting administrator privileges...${NC}"
+    exec sudo bash "$0" "$@"
+    exit $?
 fi
 
 echo -e "${GREEN}Running as root${NC}"
