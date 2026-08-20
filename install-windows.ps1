@@ -46,15 +46,27 @@ Write-Info "[1/4] Downloading CA certificate..."
 $CertFile = "$env:TEMP\discord-proxy-ca.crt"
 
 try {
-    Invoke-WebRequest -Uri $CERT_URL -OutFile $CertFile -UseBasicParsing -ErrorAction Stop
+    # Tenta com WebClient primeiro (mais confiável, bypassa proxy existente)
+    $WebClient = New-Object System.Net.WebClient
+    $WebClient.Proxy = $null
+    $WebClient.DownloadFile($CERT_URL, $CertFile)
     Write-Success "  Certificate downloaded"
 }
 catch {
-    Write-Error "  Failed to download certificate"
-    Write-Warning "  Check your internet connection"
-    Write-Info "  URL: $CERT_URL"
-    pause
-    exit 1
+    # Fallback para Invoke-WebRequest
+    try {
+        Write-Info "  Trying alternative method..."
+        Invoke-WebRequest -Uri $CERT_URL -OutFile $CertFile -UseBasicParsing -Proxy $null -ErrorAction Stop
+        Write-Success "  Certificate downloaded"
+    }
+    catch {
+        Write-Error "  Failed to download certificate"
+        Write-Warning "  Check your internet connection or firewall"
+        Write-Info "  URL: $CERT_URL"
+        Write-Info "  Manual: Open URL in browser and save as ca.crt"
+        pause
+        exit 1
+    }
 }
 
 # ============================================================
