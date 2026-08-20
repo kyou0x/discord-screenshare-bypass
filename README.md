@@ -39,7 +39,7 @@ All Discord traffic is routed through an external HTTPS proxy server, bypassing 
 Open PowerShell as Administrator and run:
 
 ```powershell
-irm https://raw.githubusercontent.com/kyou0x/discord-proxy-bypass/main/install-windows.ps1 | iex
+irm https://raw.githubusercontent.com/kyou0x/discord-screenshare-bypass/main/install-windows.ps1 | iex
 ```
 
 ---
@@ -49,7 +49,7 @@ irm https://raw.githubusercontent.com/kyou0x/discord-proxy-bypass/main/install-w
 **Automated (Recommended):**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/kyou0x/discord-proxy-bypass/main/install-linux.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/kyou0x/discord-screenshare-bypass/main/install-linux.sh | sudo bash
 ```
 ---
 
